@@ -19,7 +19,7 @@ var con = mysql.createPool({ //Connessione database Heroku
     host: 'eu-cdbr-west-03.cleardb.net',
     port: 3306,
     user: 'b8faae4add9098',
-    password: "b4dcc3b1",
+    password: process.env.passworddb,
     database: 'heroku_9b83e87c53c9585',
     charset: 'utf8mb4'
 })
@@ -226,9 +226,7 @@ client.on("message", message => {
                     updateServerstats(serverstats)
                     updateUserstats(userstats, message.member)
                 }
-                catch (err) {
-                    //console.log(err.message)
-                    return
+                catch {
                 }
             }
 
