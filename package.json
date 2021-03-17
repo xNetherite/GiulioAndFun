@@ -1,0 +1,26 @@
+{
+  "name": "giulioandleveling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiulioPaesani/GiulioAndLeveling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GiulioPaesani/GiulioAndLeveling/issues"
+  },
+  "homepage": "https://github.com/GiulioPaesani/GiulioAndLeveling#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1",
+    "expr-eval": "^2.0.2",
+    "human-number": "^1.0.6",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1"
+  }
+}
