@@ -18,9 +18,9 @@ var con = mysql.createPool({ //Connessione database Heroku
     timeout: 60 * 60 * 1000,
     host: 'eu-cdbr-west-03.cleardb.net',
     port: 3306,
-    user: 'b8faae4add9098',
+    user: 'befa7e54b6975f',
     password: process.env.passworddb,
-    database: 'heroku_9b83e87c53c9585',
+    database: 'heroku_331d3452eab82c9',
     charset: 'utf8mb4'
 })
 
