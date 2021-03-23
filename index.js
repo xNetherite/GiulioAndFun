@@ -380,6 +380,85 @@ client.on("message", message => {
     })
 })
 
+client.on("messageDelete", message => {
+    con.query(`SELECT * FROM serverstats`, (err, result) => {
+        if (err) {
+            console.log(err);
+            return
+        }
+        var serverstats = result[0];
+        try {
+            var numero = Parser.evaluate(message.content);
+
+            if (message.channel == "793781899796938802") {
+                if (numero < serverstats.numero) {
+                    return
+                }
+
+                if (numero != serverstats.numero) { //Se giocato lo stesso utente piu volte
+                    return
+                }
+
+                var titleRandom = ["PENSAVI DI FREGARMI EH!", "TE LO ELIMINI E IO LO RISCRIVO...", "PENSI DI ESSERE FURBO? BHE LO SEI", "TI SENTI SIMPATICO?"]
+                var embed = new Discord.MessageEmbed()
+                    .setTitle(titleRandom[Math.floor(Math.random() * titleRandom.length)])
+                    .setDescription(message.author.toString() + " ha eliminato il numero `" + numero + "`")
+                    .setColor("#148eff");
+
+                message.channel.send(embed)
+
+                message.channel.send(numero)
+                    .then(msg => {
+                        msg.react("🟢");
+                    })
+
+            }
+        } catch {
+            return
+        }
+    })
+})
+
+client.on("messageUpdate", oldMessage => {
+    con.query(`SELECT * FROM serverstats`, (err, result) => {
+        if (err) {
+            console.log(err);
+            return
+        }
+        var serverstats = result[0];
+        try {
+            if (oldMessage.content == "")
+                return
+            if (oldMessage.channel == "793781899796938802") {
+                var numero = Parser.evaluate(oldMessage.content);
+
+                if (numero < serverstats.numero) {
+                    return
+                }
+
+                if (numero != serverstats.numero) { //Se giocato lo stesso utente piu volte
+                    return
+                }
+
+                var titleRandom = ["PENSAVI DI FREGARMI EH!", "CREDI DI FREGARMI?", "TE LO MODIFICHI E IO LO RISCRIVO...", "PENSI DI ESSERE FURBO? BHE LO SEI", "TI SENTI SIMPATICO?"]
+                var embed = new Discord.MessageEmbed()
+                    .setTitle(titleRandom[Math.floor(Math.random() * titleRandom.length)])
+                    .setDescription(oldMessage.author.toString() + " ha modificato il numero `" + numero + "`")
+                    .setColor("#148eff");
+
+                oldMessage.channel.send(embed)
+
+                oldMessage.channel.send(numero)
+                    .then(msg => {
+                        msg.react("🟢");
+                    })
+            }
+        } catch {
+            return
+        }
+    })
+})
+
 function addUserToUserstats(utente) {
     con.query(`INSERT INTO userstats VALUES (${utente.user.id}, '${utente.user.tag}', 0, 0, 0, 0, 0, 0)`, (err) => {
         if (err) {
