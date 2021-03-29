@@ -376,6 +376,64 @@ client.on("message", message => {
 
                 message.channel.send(embed)
             }
+
+            if (message.content.startsWith("!cset")) {
+                if (!utenteMod) {
+                    var embed = new Discord.MessageEmbed()
+                        .setTitle("Non hai il permesso")
+                        .setThumbnail("https://i.postimg.cc/D0scZ1XW/No-permesso.png")
+                        .setColor("#9E005D")
+                        .setDescription("Non puoi eseguire il comando `!test` perchè non hai il permesso")
+
+                    message.channel.send(embed).then(msg => {
+                        message.delete({ timeout: 7000 })
+                        msg.delete({ timeout: 7000 })
+                    })
+                    return
+                }
+
+                var args = message.content.split(/\s+/);
+                if (!args[1]) {
+                    var embed = new Discord.MessageEmbed()
+                        .setTitle("Inserire un valore")
+                        .setThumbnail("https://i.postimg.cc/zB4j8xVZ/Error.png")
+                        .setColor("#ED1C24")
+                        .setDescription("`!cset [count]`")
+
+                    message.channel.send(embed).then(msg => {
+                        message.delete({ timeout: 7000 })
+                        msg.delete({ timeout: 7000 })
+                    })
+                    return
+                }
+
+                var count = parseInt(args[1])
+                if (!count) {
+                    var embed = new Discord.MessageEmbed()
+                        .setTitle("Inserire un valore valido")
+                        .setThumbnail("https://i.postimg.cc/zB4j8xVZ/Error.png")
+                        .setColor("#ED1C24")
+                        .setDescription("`!cset [count]`")
+
+                    message.channel.send(embed).then(msg => {
+                        message.delete({ timeout: 7000 })
+                        msg.delete({ timeout: 7000 })
+                    })
+                    return
+                }
+
+                serverstats.numero = count;
+                serverstats.ultimoUtente = "NessunUtente"
+                updateServerstats(serverstats)
+
+                var embed = new Discord.MessageEmbed()
+                    .setTitle("Ultimo numero cambiato")
+                    .setThumbnail("https://i.postimg.cc/SRpBjMg8/Giulio.png")
+                    .setColor("#16A0F4")
+                    .setDescription("L'ultimo numero è stato cambiato in " + count + ", ora potete continuare a contare")
+
+                message.channel.send(embed)
+            }
         })
     })
 })
