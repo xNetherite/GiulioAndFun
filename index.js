@@ -55,6 +55,8 @@ client.on("message", message => {
             var comandiGiulioAndCommunityBot = {
                 "!test": [],
 
+                "-!cset": [],
+
                 "-!cuser": ["801019779480944660", "793781899796938802"],
                 "-!cuserstats": ["801019779480944660", "793781899796938802"],
                 "-!cuserinfo": ["801019779480944660", "793781899796938802"],
