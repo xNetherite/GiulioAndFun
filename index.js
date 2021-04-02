@@ -136,6 +136,8 @@ client.on("message", message => {
             var canaleCounting = "793781899796938802";
             if (message.channel == canaleCounting) {
                 try {
+                    if (message.content == "cos") return
+
                     var numero = Parser.evaluate(message.content); //Get numero scritto o risultato espressione
 
                     var index = userstatsList.findIndex(x => x.id == message.author.id);
