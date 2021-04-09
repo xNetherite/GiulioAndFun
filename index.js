@@ -303,7 +303,7 @@ client.on("message", message => {
                 var embed = new Discord.MessageEmbed()
                     .setTitle("COUNTING - " + utente.user.tag)
                     .setDescription("Tutte le statistiche di **counting** su questo utente")
-                    .setThumbnail(utente.user.avatarURL())
+                    .setThumbnail(utente.user.avatarURL({ dynamic: true }))
                     .addField(":trophy: Best score", "```" + userstats.bestScore + " (" + moment(new Date(parseInt(userstats.timeBestScore))).fromNow() + ")```", true)
                     .addField(":chart_with_upwards_trend: Rank", "```#" + position + "```", true)
                     .addField(":medal: Last score", "```" + userstats.lastScore + " (" + moment(new Date(parseInt(userstats.timeLastScore))).fromNow() + ")```", true)
@@ -370,7 +370,7 @@ client.on("message", message => {
 
                 var embed = new Discord.MessageEmbed()
                     .setTitle("COUNTING - GiulioAndCommunity")
-                    .setThumbnail(message.member.guild.iconURL())
+                    .setThumbnail(message.member.guild.iconURL({ dynamic: true }))
                     .setDescription("La classifica del server su **counting**")
                     .addField(":1234: Current Number", "```" + serverstats.numero + "```", true)
                     .addField(":medal: Last user", serverstats.ultimoUtente != "NessunUtente" ? "```" + client.users.cache.find(u => u.id == serverstats.ultimoUtente).username + "```" : "```None```", true)
