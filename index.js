@@ -314,8 +314,8 @@ client.on("message", message => {
                     .addField(":trophy: Best score", "```" + userstats.bestScore + " (" + moment(new Date(parseInt(userstats.timeBestScore))).fromNow() + ")```", true)
                     .addField(":chart_with_upwards_trend: Rank", "```#" + position + "```", true)
                     .addField(":medal: Last score", "```" + userstats.lastScore + " (" + moment(new Date(parseInt(userstats.timeLastScore))).fromNow() + ")```", true)
-                    .addField(":white_check_mark: Total correct", "```" + userstats.correct + "(" + parseInt((100 * userstats.correct / (userstats.correct + userstats.incorrect))) + "%)```", true)
-                    .addField(":x: Total incorrect", "```" + userstats.incorrect + "(" + parseInt((100 * userstats.incorrect / (userstats.correct + userstats.incorrect))) + "%)```", true)
+                    .addField(":white_check_mark: Total correct", "```" + userstats.correct + "( " + (100 * userstats.correct / (userstats.correct + userstats.incorrect)).toFixed(2) + "%)```", true)
+                    .addField(":x: Total incorrect", "```" + userstats.incorrect + "( " + (100 * userstats.incorrect / (userstats.correct + userstats.incorrect)).toFixed(2) + "%)```", true)
 
                 message.channel.send(embed)
             }
