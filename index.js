@@ -9,6 +9,13 @@ client.login(process.env.token);
 
 client.on("ready", () => {
     console.log("-----GIULIOANDFUN ONLINE-----")
+
+    var utente = client.users.cache.get("793768313934577664");
+    var embed = new Discord.MessageEmbed()
+        .setTitle("GiulioAndFun è ONLINE")
+        .setThumbnail("https://i.postimg.cc/rmzJw77v/Profilo-bot3.png")
+        .setColor("#72CA63")
+    utente.send(embed);
 })
 
 var con = mysql.createPool({ //Connessione database Heroku
