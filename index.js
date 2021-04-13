@@ -33,7 +33,7 @@ var con = mysql.createPool({ //Connessione database Heroku
 
 var ruoliMod = [
     "793796029878370326", //ADMIN
-    "820031809046708254", //MOD "FINTO"
+    "831575570151505940", //MOD "FINTO"
     "799925821904125962", //MOD
     "793804156430188594", //BOT
 ]
