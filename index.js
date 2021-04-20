@@ -433,6 +433,20 @@ client.on("message", message => {
                     return
                 }
 
+                if (count > serverstats.bestScore) {
+                    var embed = new Discord.MessageEmbed()
+                        .setTitle("Inserire un valore valido")
+                        .setThumbnail("https://i.postimg.cc/zB4j8xVZ/Error.png")
+                        .setColor("#ED1C24")
+                        .setDescription("Non puoi inserire un numero maggiore del record del server")
+
+                    message.channel.send(embed).then(msg => {
+                        message.delete({ timeout: 7000 })
+                        msg.delete({ timeout: 7000 })
+                    })
+                    return
+                }
+
                 serverstats.numero = count;
                 serverstats.ultimoUtente = "NessunUtente"
                 updateServerstats(serverstats)
